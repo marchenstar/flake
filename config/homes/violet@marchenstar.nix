@@ -3,9 +3,14 @@
   config,
   pkgs,
   homeManagerModules,
+  mylib,
   ...
 }:
 
+let
+  wrapIntelGL = mylib.wrapPrefix pkgs.nixgl.nixGLIntel;
+  wrapIntelVulkan = mylib.wrapPrefix pkgs.nixgl.nixVulkanIntel;
+in
 {
   imports = [
     ./violet.nix
@@ -14,8 +19,7 @@
   ];
   services.syncthing.enable = true;
   home.packages = [
-    pkgs.nixgl.nixVulkanIntel
-    pkgs.nixgl.nixGLIntel
+    (wrapIntelVulkan pkgs.zed-editor "zed")
   ];
   home.stateVersion = "24.05";
 }
