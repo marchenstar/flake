@@ -19,7 +19,7 @@ in
   ];
   services.syncthing.enable = true;
   home.packages = [
-    (wrapIntelVulkan pkgs.zed-editor "zed")
+    (wrapIntelVulkan pkgs.zed-editor "zeditor")
   ];
   home.stateVersion = "24.05";
 }
