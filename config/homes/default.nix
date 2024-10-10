@@ -4,6 +4,7 @@
   nixos = lib.genAttrs [
     "violet@quartz"
     "violet@liella"
+    "megumin"
   ] (home: ./${home}.nix);
   # standalone homeManagerConfigurations
   standalone =
