@@ -16,3 +16,9 @@ creation_rules:
       - age:
           - *user_violet
           - *host_yharnam
+  - path_regex: secrets/pc\.json$
+    key_groups:
+      - age:
+          - *user_violet
+          - *host_liella
+          - *host_quartz
