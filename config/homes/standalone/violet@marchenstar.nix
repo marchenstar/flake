@@ -1,6 +1,4 @@
 {
-  lib,
-  config,
   pkgs,
   homeManagerConfig,
   mylib,
@@ -21,7 +19,7 @@ let
 in
 {
   imports = [
-    ./violet.nix
+    ../violet.nix
     homeManagerConfig.plasma
     homeManagerConfig.generic
   ];

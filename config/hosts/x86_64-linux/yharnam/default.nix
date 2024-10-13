@@ -1,8 +1,7 @@
 {
   lib,
-  nixosConfig,
+  modules,
   inputs,
-  homes,
   ...
 }:
 let
@@ -16,14 +15,14 @@ in
     ./persist.nix
     ./creds.nix
     ./net.nix
-    nixosConfig.hardware.amd
-    nixosConfig.lanzaboote
-    nixosConfig.home-manager
-    nixosConfig.users.megumin
-    nixosConfig.users.nixremote
+    modules.nixos.hardware.amd
+    modules.nixos.lanzaboote.default
+    modules.nixos.home-manager
+    modules.nixos.users.megumin
+    modules.nixos.users.nixremote
     inputs.self.nixosModules.services.hath
-  ] ++ builtins.map (user: nixosConfig.users.${user}) users;
-  home-manager.users = lib.genAttrs users (user: homes."${user}");
+  ] ++ builtins.map (user: modules.nixos.users.${user}) users;
+  home-manager.users = lib.genAttrs users (user: modules.homes."${user}");
   hardware.rasdaemon.enable = true;
   services.smartd.enable = true;
   time.timeZone = "UTC";
