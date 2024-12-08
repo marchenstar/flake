@@ -1,5 +1,29 @@
 {
+  lib,
+  config,
+  ...
+}:
+{
   services.zfs.trim.interval = "daily";
+  # for fun
+  networking.hostId =
+    let
+      hash = builtins.hashString "md5" config.networking.hostName;
+      inherit (lib)
+        map
+        fromHexString
+        substring
+        range
+        foldl
+        bitXor
+        toHexString
+        ;
+      id = toHexString (
+        foldl (a: b: bitXor a b) 0 (map (i: fromHexString (substring (i * 8) 8 hash)) (range 0 3))
+      );
+      pad = lib.concatStrings (lib.lists.replicate (8 - lib.stringLength id) "0");
+    in
+    pad + id;
   services.zfs.trim.enable = true;
   disko.devices = {
     disk = {
