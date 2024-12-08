@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  username = "megumin";
+  username = "kanata";
 in
 {
   home = {
@@ -14,5 +14,5 @@ in
   home.packages = with pkgs; [
     fanbox-dl
   ];
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
 }
