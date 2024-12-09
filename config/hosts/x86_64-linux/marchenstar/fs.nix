@@ -199,6 +199,7 @@
             mountpoint = "/var/lib/hath";
             options = {
               atime = "off";
+              mountpoint = "legacy";
             };
           };
           home = {
@@ -206,6 +207,7 @@
             mountpoint = "/home";
             options = {
               checksum = "blake3";
+              mountpoint = "legacy";
             };
           };
         };
