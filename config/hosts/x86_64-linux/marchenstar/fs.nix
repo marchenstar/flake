@@ -204,9 +204,15 @@
           };
           home = {
             type = "zfs_fs";
-            mountpoint = "/home";
             options = {
               checksum = "blake3";
+              canmount = "off";
+            };
+          };
+          "home/kanata" = {
+            type = "zfs_fs";
+            mountpoint = "/home/kanata";
+            options = {
               mountpoint = "legacy";
             };
           };
