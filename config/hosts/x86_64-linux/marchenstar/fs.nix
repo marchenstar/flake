@@ -175,28 +175,40 @@
           keylocation = "file:///var/lib/keyfile.bin";
           relatime = "on";
           acltype = "posixacl";
+          mountpoint = "/";
+          canmount = "off";
           xattr = "sa";
           utf8only = "on";
           normalization = "none";
         };
         datasets = {
-          hath = {
+          var = {
             type = "zfs_fs";
             options = {
-              atime = "off";
+              canmount = "off";
             };
+          };
+          "var/lib" = {
+            type = "zfs_fs";
+            options = {
+              canmount = "off";
+            };
+          };
+          "var/lib/hath" = {
+            type = "zfs_fs";
             mountpoint = "/var/lib/hath";
+            options = {
+              atime = "off";
+              canmount = "noauto";
+            };
           };
           home = {
             type = "zfs_fs";
+            mountpoint = "/home";
             options = {
               checksum = "blake3";
+              canmount = "noauto";
             };
-            mountpoint = "/home";
-          };
-          persist = {
-            type = "zfs_fs";
-            mountpoint = "/persist";
           };
         };
       };
