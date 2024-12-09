@@ -175,7 +175,7 @@
           keylocation = "file:///var/lib/keyfile.bin";
           relatime = "on";
           acltype = "posixacl";
-          mountpoint = "/";
+          mountpoint = "legacy";
           canmount = "off";
           xattr = "sa";
           utf8only = "on";
@@ -199,7 +199,6 @@
             mountpoint = "/var/lib/hath";
             options = {
               atime = "off";
-              mountpint = "legacy";
             };
           };
           home = {
@@ -207,7 +206,6 @@
             mountpoint = "/home";
             options = {
               checksum = "blake3";
-              mountpoint = "legacy";
             };
           };
         };
