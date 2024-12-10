@@ -28,7 +28,7 @@ in
   users.users.root.hashedPassword = "$y$j9T$N4d6f/0luo4g9pnrBMKTS.$2t7Z4LzizfFdDET/Ij8DjgJLm5kRlWSU1bdzWXqVbo4";
   services = {
     sysstat.enable = true;
-    hath.enable = false;
+    hath.enable = true;
   };
   system.stateVersion = "25.05";
 }
