@@ -10,6 +10,7 @@ in
 {
   options = {
     services.hath.enable = lib.mkEnableOption "Enable hath service";
+    services.hath.package = lib.mkPackageOption pkgs "hentai-at-home" { };
   };
 
   config = lib.mkIf cfg.enable (
@@ -42,7 +43,7 @@ in
           Group = "hath";
           LoadCredential = "client_login:${config.sops.secrets."services/client_login".path}";
           ExecStartPre = ''${pkgs.coreutils}/bin/cp -fv "''${CREDENTIALS_DIRECTORY}/client_login" "${homeDir}/data/client_login"'';
-          ExecStart = "${pkgs.hentai-at-home}/bin/HentaiAtHome";
+          ExecStart = "${cfg.package}/bin/HentaiAtHome";
           Restart = "on-failure";
           RestartSec = "5m";
           NoNewPrivileges = true;
